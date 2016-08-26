@@ -55,10 +55,6 @@ public class TipoOficinaEntidad implements Serializable {
     @Column(name = "NB_OFICINA", nullable = false, length = 50)
     private String nombre;
 
-    @Basic(optional = false)
-    @Column(name = "IDEN_TIPO_OFICINA", nullable = false, length = 50)
-    private String codigo;
-
     @Basic(optional = true)
     @Column(name = "TX_DESCRIPCION", nullable = true, length = 200)
     private String descripcion;
@@ -127,14 +123,6 @@ public class TipoOficinaEntidad implements Serializable {
 
     public void setOficinas(List<OficinaEntidad> oficinas) {
         this.oficinas = oficinas;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
 }
