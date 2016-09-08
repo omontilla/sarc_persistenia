@@ -52,7 +52,7 @@ public class TipoOficinaEntidad implements Serializable {
     private long id;
 
     @Basic(optional = false)
-    @Column(name = "NB_OFICINA", nullable = false, length = 50)
+    @Column(name = "NB_OFICINA", nullable = false, length = 255)
     private String nombre;
 
     @Basic(optional = true)

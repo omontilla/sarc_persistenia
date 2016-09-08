@@ -22,7 +22,7 @@ public interface OficinaRepository extends CrudRepository<OficinaEntidad, Long> 
      * @return OficinaEntidad
      * @author carlos.castillo
      */
-    public List<OficinaEntidad> buscarPorGeografico(@Param("geografico") int geografico, @Param("tipoOficina") TipoOficinaEntidad tipoOficina);
+    public List<OficinaEntidad> buscarPorGeografico(@Param("ambito") int ambito, @Param("tipoOficina") TipoOficinaEntidad tipoOficina);
 
     /**
      * @Metodo Metodo para buscar una oficina por su ID

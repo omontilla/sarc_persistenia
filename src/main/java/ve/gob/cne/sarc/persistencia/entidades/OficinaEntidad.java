@@ -40,7 +40,7 @@ import ve.gob.cne.sarc.persistencia.disparadores.OficinaDisparador;
     @NamedQuery(name = OficinaEntidad.BUSCAR_POR_ID, query = "SELECT ofi "
             + "FROM   OficinaEntidad ofi WHERE  ofi.id = :id"),
     @NamedQuery(name = OficinaEntidad.BUSCAR_POR_GEOGRAFICO, query = "SELECT ofi "
-            + "FROM   OficinaEntidad ofi WHERE  ofi.geografico = :geografico AND ofi.tipoOficina = :tipoOficina"),
+            + "FROM   OficinaEntidad ofi WHERE  ofi.ambito = :ambito AND ofi.tipoOficina = :tipoOficina"),
 })
 
 public class OficinaEntidad implements Serializable {
@@ -58,7 +58,7 @@ public class OficinaEntidad implements Serializable {
     private long id;
 
     @Basic(optional = false)
-    @Column(name = "NB_OFICINA", nullable = false, length = 50)
+    @Column(name = "NB_OFICINA", nullable = false, length = 255)
     private String nombre;
 
     @Temporal(TemporalType.DATE)
@@ -73,15 +73,15 @@ public class OficinaEntidad implements Serializable {
 
     @Basic(optional = true)
     @Column(name = "NU_GACETA", nullable = true, length = 20)
-    private int numero;
+    private Integer numero;
 
     @Temporal(TemporalType.DATE)
     @Basic(optional = true)
     @Column(name = "FE_GACETA", nullable = true)
     private Date fechaGaceta;
 
-    @Basic(optional = false)
-    @Column(name = "DI_UBICACION", nullable = false, length = 500)
+    @Basic(optional = true)
+    @Column(name = "DI_UBICACION", nullable = true, length = 500)
     private String direccion;
 
     @Basic(optional = true)
@@ -91,6 +91,10 @@ public class OficinaEntidad implements Serializable {
     @Basic(optional = false)
     @Column(name = "CO_GEOGRAFICO", unique = true, nullable = false)
     private int geografico;
+    
+    @Basic(optional = false)
+    @Column(name = "CO_AMBITO", unique = true, nullable = false)
+    private int ambito;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "CO_TIPO_OFICINA", referencedColumnName = "CO_TIPO_OFICINA", nullable = false)
@@ -159,11 +163,11 @@ public class OficinaEntidad implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
